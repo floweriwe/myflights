@@ -17,6 +17,9 @@ class Currency(models.Model):
     code = models.CharField(max_length=3, unique=True)  # например, 'USD', 'EUR'
     name = models.CharField(max_length=30)  # например, 'US Dollar', 'Euro'
 
+    def __str__(self):
+        return f"{self.name} ({self.code})"
+
 
 class Flight(models.Model):  # Представляет информацию о конкретном рейсе
     flight_number = models.CharField(max_length=10)  # Например, 'SU123'

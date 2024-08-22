@@ -21,7 +21,8 @@ class MyUserManager(BaseUserManager):
             # нормализация email
             email = self.normalize_email(email)
             # создание объекта пользователя с указанным email и доп.полями
-            user = self.model(email=email, **kwargs)
+            username = email.split('@')[0]  # username = 1-я часть Email'а до знака @
+            user = self.model(email=email, username=username, **kwargs)
             # задается пароль для пользователя
             user.set_password(password)
             # сохраняем пользователя в базе данных
@@ -61,6 +62,7 @@ class MyUserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
+    username = models.CharField(max_length=150, unique=True)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     is_active = models.BooleanField(default=True)
