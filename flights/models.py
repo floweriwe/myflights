@@ -49,6 +49,7 @@ class Booking(models.Model):  # Хранит информацию о брони�
     ], default='Pending')
 
     def __str__(self):
+        user = self.user
         return f"Booking {self.id} by {self.user.username}"
 
 
