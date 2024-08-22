@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     # custom applications
     'users',
     'flights',
+    'corsheaders',
+    'rest_framework',
     # default applications
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'users.User'  # Указание пользовательской модели
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,6 +60,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+# Настройка CORS
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # здесь порт, на котором работает фронтенд
+    "http://127.0.0.1:3000",   # фронтенд работает на этом адресе
 ]
 
 ROOT_URLCONF = 'mysite.urls'
