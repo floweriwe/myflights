@@ -148,3 +148,8 @@ STATICFILES_DIRS = [
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRONJOBS = [
+    ('0 0 * * *', 'flights.management.commands.fetch_aviasales_data')
+]
+
