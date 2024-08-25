@@ -108,7 +108,10 @@ python manage.py createsuperuser
 ```
 python manage.py test
 ```
-
+Загрузка данных по аэропортам в БД
+```
+python manage.py fetch_aviasales_data
+```
 
 # Решение проблем
 
